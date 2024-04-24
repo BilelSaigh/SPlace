@@ -22,11 +22,12 @@ if (process.env.TILESET_OPTIMIZATION && process.env.TILESET_OPTIMIZATION === "tr
 }
 
 export default defineConfig({
-    base: "./",
+    // ...
     build: {
         rollupOptions: {
             input: {
                 index: "./index.html",
+                note: "./note.html",
                 ...getMapsScripts(maps),
             },
         },
