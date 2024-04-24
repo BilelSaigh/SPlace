@@ -1,6 +1,9 @@
 /// <reference types="@workadventure/iframe-api-typings" />
 
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
+import { parseCronExpression } from "cron-schedule";
+import { TimerBasedCronScheduler as scheduler } from "cron-schedule/schedulers/timer-based.js";
+
 
 console.log('Script started successfully');
 
@@ -23,6 +26,26 @@ WA.onInit().then(() => {
     bootstrapExtra().then(() => {
         console.log('Scripting API Extra ready');
     }).catch(e => console.error(e));
+
+    // At 19:00, hide the laptops
+    const cronStartNight = parseCronExpression('0 19 * * *');
+    scheduler.setInterval(cronStartNight, () => {
+        WA.room.hideLayer("above/laptops");
+    });
+
+    // At 7:00, show the laptops
+    const cronStartDay = parseCronExpression('0 7 * * *');
+    scheduler.setInterval(cronStartDay, () => {
+        WA.room.showLayer("above/laptops");
+    });
+
+    // If the player enters the room between 19:00 and 7:00, hide the laptops
+    const now = new Date();
+    const startNight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19, 0, 0);
+    const startDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 7, 0, 0);
+    if (now > startNight || now < startDay) {
+        WA.room.hideLayer("above/laptops");
+    }
 
 }).catch(e => console.error(e));
 
