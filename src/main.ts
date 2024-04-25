@@ -11,9 +11,9 @@ let currentPopup: any = undefined;
 WA.onInit().then(  async () => {
 
     console.log('Scripting API ready');
-    console.log('Player tags: ',WA.player.tags)
+    console.log('Tags: ', WA.player.tags);
     let noteWebsite: any;
-    console.log('Model ')
+    console.log('Model')
     if (WA.player.tags.includes('model')) {
         console.log('Player is a model');
         WA.ui.onRemotePlayerClicked.subscribe((remotePlayer: RemotePlayer) => {
