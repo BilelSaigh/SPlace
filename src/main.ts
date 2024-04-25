@@ -19,7 +19,9 @@ WA.onInit().then(  async () => {
     console.log('Scripting API ready');
     console.log('Player tags: ',WA.player.tags)
     let noteWebsite: any;
+    console.log('Model ')
     if (WA.player.tags.includes('model')) {
+        console.log('Player is a model');
         WA.ui.onRemotePlayerClicked.subscribe((remotePlayer: RemotePlayerInterface) => {
             console.log('Remote player clicked', remotePlayer);
             remotePlayer.addAction('En savoir plus', async () => {
