@@ -2,8 +2,8 @@
 
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 import {
-    RemotePlayerInterface,
-    RemotePlayerMoved
+    RemotePlayer,
+    RemotePlayerInterface
 } from "@workadventure/iframe-api-typings/play/src/front/Api/Iframe/Players/RemotePlayer";
 import {
     loadingConfigurationLayerStore
@@ -22,7 +22,7 @@ WA.onInit().then(  async () => {
     console.log('Model ')
     if (WA.player.tags.includes('model')) {
         console.log('Player is a model');
-        WA.ui.onRemotePlayerClicked.subscribe((remotePlayer: RemotePlayerInterface) => {
+        WA.ui.onRemotePlayerClicked.subscribe((remotePlayer: RemotePlayer) => {
             console.log('Remote player clicked', remotePlayer);
             remotePlayer.addAction('En savoir plus', async () => {
                 noteWebsite = await WA.ui.website.open({
