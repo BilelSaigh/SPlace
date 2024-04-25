@@ -12,6 +12,7 @@ WA.onInit().then(  async () => {
 
     console.log('Scripting API ready');
     console.log('Tags: ', WA.player.tags);
+    console.log('Player: ', WA.player);
     let noteWebsite: any;
     console.log('Model')
     if (WA.player.tags.includes('model')) {
