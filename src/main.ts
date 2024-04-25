@@ -1,13 +1,6 @@
 /// <reference types="@workadventure/iframe-api-typings" />
 
-import { bootstrapExtra } from "@workadventure/scripting-api-extra";
-import {
-    RemotePlayer,
-    RemotePlayerInterface
-} from "@workadventure/iframe-api-typings/play/src/front/Api/Iframe/Players/RemotePlayer";
-import {
-    loadingConfigurationLayerStore
-} from "@workadventure/scripting-api-extra/dist/Iframes/Configuration/Stores/LayersStore";
+import {RemotePlayer} from "@workadventure/iframe-api-typings/play/src/front/Api/Iframe/Players/RemotePlayer";
 
 console.log('Script started successfully');
 
