@@ -14,10 +14,15 @@ console.log('Script started successfully');
 let currentPopup: any = undefined;
 
 // Waiting for the API to be ready
-WA.onInit().then( () => {
+WA.onInit().then(  async () => {
 
     console.log('Scripting API ready');
     console.log('Player tags: ',WA.player.tags)
+    await WA.players.configureTracking();
+    const players = WA.players.list();
+    for (const player of players) {
+        console.log(`Player ${player.name} score is ${player.state.score}`);
+    }
 
     let noteWebsite: any;
     WA.ui.onRemotePlayerClicked.subscribe((remotePlayer: RemotePlayerInterface) => {
