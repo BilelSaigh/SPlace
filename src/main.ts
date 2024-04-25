@@ -1,6 +1,7 @@
 /// <reference types="@workadventure/iframe-api-typings" />
 
 import { ActionMessage } from "@workadventure/iframe-api-typings";
+import { log } from "console";
 
 console.log('Script started successfully');
 
@@ -14,6 +15,31 @@ function genMessage() {
         message: "Press SPACE to LIKE",
         callback: () => {
             const userName = WA.player.name;
+            WA.state.loadVariable('likeCounts')
+            if(!WA.state.hasVariable('likeCounts')){              
+                WA.state.saveVariable('likeCounts', {})
+            }else{
+              let save = WA.state.likeCounts;
+              
+              console.log("save", save);
+
+               if(save === '{}'){
+                save = {};
+               } 
+
+              if(save.hasOwnProperty(WA.player.name)){
+                //console.log("moqq", save.hasOwnProperty(WA.player.name));
+                save[WA.player.name] = save[WA.player.name] + 1;
+                WA.state.saveVariable('likeCounts', save)
+              }else{
+                save[WA.player.name] = 0;
+                WA.state.saveVariable('likeCounts', save)
+              }
+              console.log(WA.state.loadVariable('likeCounts'));
+            
+            }
+        
+            
             likeCounts[userName] = (likeCounts[userName] || 0) + 1;
             console.log(`***** ${userName} has ${likeCounts[userName]} likes ******`);
             genMessage();
@@ -35,11 +61,16 @@ function getRankings(): string[] {
 
 // Attente de l'initialisation de l'API
 WA.onInit().then(() => {
+  
+
+  WA.state.onVariableChange('likeCounts').subscribe((data: unknown) => {
+    console.log('data' +data);
+    
+  })
+  
     let actionMessage: ActionMessage | undefined;
 
     WA.room.area.onEnter("likeZone").subscribe(() => {
-        console.log("oui");
-
         // Afficher le message d'action
         actionMessage = genMessage();
     });
@@ -59,7 +90,11 @@ WA.onInit().then(() => {
       rankings.forEach((userName, index) => {
           console.log(`${index + 1}. ${userName} - ${likeCounts[userName]} likes`);
       });
-  }, 5000); // Afficher les classements toutes les 5 secondes
+  }, 10000); // Afficher les classements toutes les 5 secondes
+
+  WA.state.onVariableChange('likeCounts').subscribe((data: unknown) => {
+    console.log(data);
+  }) 
 
 }).catch(e => console.error(e));
 
