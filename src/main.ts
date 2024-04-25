@@ -34,8 +34,8 @@ WA.onInit().then(() => {
                 horizontal: "middle",
             },
             size: {
-                height: "30vh",
-                width: "50vw",
+                height: "60%",
+                width: "70%",
             },
             margin: {
                 top: "10vh",
