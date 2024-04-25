@@ -1379,6 +1379,12 @@
         {
          "columns":12,
          "firstgid":6626,
+         "grid":
+            {
+             "height":32,
+             "orientation":"orthogonal",
+             "width":32
+            },
          "image":"tilesets\/!obj_door1.png",
          "imageheight":768,
          "imagewidth":576,
