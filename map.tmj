@@ -461,6 +461,17 @@
                  "width":32,
                  "x":64,
                  "y":544
+                }, 
+                {
+                 "height":150.666666666667,
+                 "id":20,
+                 "name":"likeZone",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":74,
+                 "x":249.333333333333,
+                 "y":384
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -543,7 +554,7 @@
          "y":0
         }],
  "nextlayerid":63,
- "nextobjectid":20,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "properties":[
         {

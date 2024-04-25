@@ -8,11 +8,9 @@ console.log('Script started successfully');
 WA.onInit().then(() => {
   let actionMessage: ActionMessage | undefined;
   let likeCount = 0;
-  // When someone enters the bellZone area
+ 
 
-  let stopLike = false;
-
-  WA.room.area.onEnter("bellZone").subscribe(() => {
+  WA.room.area.onEnter("likeZone").subscribe(() => {
     console.log("oui");
     
     // Display the action message
@@ -22,7 +20,6 @@ WA.onInit().then(() => {
         message: "Press SPACE to LIKE",
         callback: () => {
             likeCount++;
-            // When space is pressed, we send a "bell-rang" signal to everyone on the map.
             console.log(`*****${actionMessage} ${likeCount}******`);
 
             genMessage();
