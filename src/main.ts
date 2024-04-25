@@ -30,8 +30,8 @@ WA.onInit().then(() => {
     genMessage();    
   });
 
-  // When someone leaves the bellZone area
-  WA.room.area.onLeave("bellZone").subscribe(() => {
+  // When someone leaves the likeZone area
+  WA.room.area.onLeave("likeZone").subscribe(() => {
     if (actionMessage !== undefined) {
       // Hide the action message
       actionMessage.remove();
