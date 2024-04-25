@@ -18,33 +18,33 @@ WA.onInit().then(  async () => {
 
     console.log('Scripting API ready');
     console.log('Player tags: ',WA.players.tags)
+    let noteWebsite: any;
+    if (WA.player.tags.includes('model')) {
+        WA.ui.onRemotePlayerClicked.subscribe((remotePlayer: RemotePlayerInterface) => {
+            remotePlayer.addAction('En savoir plus', async () => {
+                noteWebsite = await WA.ui.website.open({
+                    url: "./form.html",
+                    position: {
+                        vertical: "middle",
+                        horizontal: "middle",
+                    },
+                    size: {
+                        height: "30vh",
+                        width: "80vh",
+                    },
+                    margin: {
+                        top: "10vh",
+                    },
+                    allowApi: true,
+                })
+            })
+        });
 
-    await WA.players.configureTracking();
-    const players = WA.players.list();
-    for (const player of players) {
-        console.log(`Player ${player.name} score is ${player.state.score}`);
+
     }
 
-    let noteWebsite: any;
-    WA.ui.onRemotePlayerClicked.subscribe((remotePlayer: RemotePlayerInterface) => {
-        const action = remotePlayer.addAction('En savoir plus', async () => {
-            noteWebsite = await WA.ui.website.open({
-                url: "./form.html",
-                position: {
-                    vertical: "middle",
-                    horizontal: "middle",
-                },
-                size: {
-                    height: "30vh",
-                    width: "80vh",
-                },
-                margin: {
-                    top: "10vh",
-                },
-                allowApi: true,
-            })
-        })
-    });
+
+
 
     WA.room.onEnterLayer("formLayer").subscribe(async () => {
         noteWebsite = await WA.ui.website.open({
