@@ -1,36 +1,66 @@
 /// <reference types="@workadventure/iframe-api-typings" />
 
-import { bootstrapExtra } from "@workadventure/scripting-api-extra";
+import { ActionMessage } from "@workadventure/iframe-api-typings";
 
 console.log('Script started successfully');
 
-let currentPopup: any = undefined;
+// Structure de données pour stocker les likes associés aux utilisateurs
+const likeCounts: Record<string, number> = {};
 
-// Waiting for the API to be ready
+// Générer un message d'action
+function genMessage() {
+    return WA.ui.displayActionMessage({
+        type: "message",
+        message: "Press SPACE to LIKE",
+        callback: () => {
+            const userName = WA.player.name;
+            likeCounts[userName] = (likeCounts[userName] || 0) + 1;
+            console.log(`***** ${userName} has ${likeCounts[userName]} likes ******`);
+            genMessage();
+        }
+    });
+}
+
+// Fonction pour récupérer le classement
+function getRankings(): string[] {
+    // Convertir l'objet de likes en tableau d'objets [userName, likeCount]
+    const likeEntries = Object.entries(likeCounts);
+
+    // Trier les utilisateurs par nombre de likes décroissant
+    likeEntries.sort((a, b) => b[1] - a[1]);
+
+    // Renvoyer uniquement les identifiants d'utilisateur dans l'ordre de classement
+    return likeEntries.map(entry => entry[0]);
+}
+
+// Attente de l'initialisation de l'API
 WA.onInit().then(() => {
-    console.log('Scripting API ready');
-    console.log('Player tags: ',WA.player.tags)
+    let actionMessage: ActionMessage | undefined;
 
-    WA.room.area.onEnter('clock').subscribe(() => {
-        const today = new Date();
-        const time = today.getHours() + ":" + today.getMinutes();
-        currentPopup = WA.ui.openPopup("clockPopup", "It's " + time, []);
-    })
+    WA.room.area.onEnter("likeZone").subscribe(() => {
+        console.log("oui");
 
-    WA.room.area.onLeave('clock').subscribe(closePopup)
+        // Afficher le message d'action
+        actionMessage = genMessage();
+    });
 
-    // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure
-    bootstrapExtra().then(() => {
-        console.log('Scripting API Extra ready');
-    }).catch(e => console.error(e));
+    // Lorsque quelqu'un quitte la zone de likeZone
+    WA.room.area.onLeave("likeZone").subscribe(() => {
+        if (actionMessage !== undefined) {
+            // Masquer le message d'action
+            actionMessage.remove();
+            actionMessage = undefined;
+        }
+    });
+
+    setInterval(() => {
+      const rankings = getRankings();
+      console.log("Rankings:");
+      rankings.forEach((userName, index) => {
+          console.log(`${index + 1}. ${userName} - ${likeCounts[userName]} likes`);
+      });
+  }, 5000); // Afficher les classements toutes les 5 secondes
 
 }).catch(e => console.error(e));
-
-function closePopup(){
-    if (currentPopup !== undefined) {
-        currentPopup.close();
-        currentPopup = undefined;
-    }
-}
 
 export {};
