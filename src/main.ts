@@ -1,6 +1,7 @@
 /// <reference types="@workadventure/iframe-api-typings" />
 
 import {RemotePlayer} from "@workadventure/iframe-api-typings/play/src/front/Api/Iframe/Players/RemotePlayer";
+import {bootstrapExtra} from "@workadventure/scripting-api-extra/dist";
 
 console.log('Script started successfully');
 
