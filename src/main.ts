@@ -14,8 +14,7 @@ WA.onInit().then(  async () => {
     console.log('Tags: ', WA.player.tags);
     console.log('Player: ', WA.player);
     let noteWebsite: any;
-    console.log('model')
-    if (WA.player.tags.includes('member')) {
+    if (WA.player.tags.includes('model')) {
         console.log('Player is a model');
         WA.ui.onRemotePlayerClicked.subscribe((remotePlayer: RemotePlayer) => {
             console.log('Remote player clicked', remotePlayer);
@@ -37,11 +36,7 @@ WA.onInit().then(  async () => {
                 })
             })
         });
-
-
     }
-
-
 
 
     WA.room.onEnterLayer("formLayer").subscribe(async () => {
