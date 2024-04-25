@@ -17,10 +17,11 @@ let currentPopup: any = undefined;
 WA.onInit().then(  async () => {
 
     console.log('Scripting API ready');
-    console.log('Player tags: ',WA.players.tags)
+    console.log('Player tags: ',WA.player.tags)
     let noteWebsite: any;
     if (WA.player.tags.includes('model')) {
         WA.ui.onRemotePlayerClicked.subscribe((remotePlayer: RemotePlayerInterface) => {
+            console.log('Remote player clicked', remotePlayer);
             remotePlayer.addAction('En savoir plus', async () => {
                 noteWebsite = await WA.ui.website.open({
                     url: "./form.html",
