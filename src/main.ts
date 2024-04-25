@@ -18,6 +18,7 @@ WA.onInit().then(  async () => {
 
     console.log('Scripting API ready');
     console.log('Player tags: ',WA.players.tags)
+
     await WA.players.configureTracking();
     const players = WA.players.list();
     for (const player of players) {
