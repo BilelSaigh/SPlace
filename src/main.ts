@@ -14,8 +14,8 @@ WA.onInit().then(  async () => {
     console.log('Tags: ', WA.player.tags);
     console.log('Player: ', WA.player);
     let noteWebsite: any;
-    console.log('Model')
-    if (WA.player.tags.includes('model')) {
+    console.log('model')
+    if (WA.player.tags.includes('member')) {
         console.log('Player is a model');
         WA.ui.onRemotePlayerClicked.subscribe((remotePlayer: RemotePlayer) => {
             console.log('Remote player clicked', remotePlayer);
