@@ -48,6 +48,8 @@ function genMessage() {
     });
 }
 
+
+
 // Fonction pour récupérer le classement
 function getRankings(): string[] {
     // Convertir l'objet de likes en tableau d'objets [userName, likeCount]
@@ -63,7 +65,7 @@ function getRankings(): string[] {
 // Attente de l'initialisation de l'API
 WA.onInit().then(() => {
   
-  
+  let noteWebsite: any;
 
   WA.state.onVariableChange('likeCounts').subscribe((data: unknown) => {
     console.log('data' +data);
