@@ -11,6 +11,7 @@ let currentPopup: any = undefined;
 WA.onInit().then(  async () => {
 
     console.log('Scripting API ready');
+    console.log('My Tags', WA.player.tags);
     let noteWebsite: any;
     WA.ui.onRemotePlayerClicked.subscribe((remotePlayer: RemotePlayer) => {
         if (WA.player.tags.includes('model')) {
