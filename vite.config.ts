@@ -27,7 +27,10 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 index: "./index.html",
+                form: "./form.html",
+                success: "./payment-success.html",
                 ...getMapsScripts(maps),
+
             },
         },
     },
