@@ -1,7 +1,6 @@
 /// <reference types="@workadventure/iframe-api-typings" />
 
 import { ActionMessage } from "@workadventure/iframe-api-typings";
-import { log } from "console";
 
 console.log('Script started successfully');
 
@@ -15,10 +14,11 @@ function genMessage() {
         message: "Press SPACE to LIKE",
         callback: () => {
             const userName = WA.player.name;
-            WA.state.loadVariable('likeCounts')
-            if(!WA.state.hasVariable('likeCounts')){              
+            WA.player.state.loadVariable('likeCounts')
+            if(!WA.player.state.hasVariable('likeCounts')){              
                 WA.state.saveVariable('likeCounts', {})
             }else{
+
               let save = WA.state.likeCounts;
               
               console.log("save", save);
@@ -26,9 +26,10 @@ function genMessage() {
                if(save === '{}'){
                 save = {};
                } 
-
+              
+              
               if(save.hasOwnProperty(WA.player.name)){
-                //console.log("moqq", save.hasOwnProperty(WA.player.name));
+                //console.log("moqq", save.hasOwnProperty(WA.player.name)); //return true
                 save[WA.player.name] = save[WA.player.name] + 1;
                 WA.state.saveVariable('likeCounts', save)
               }else{
@@ -61,6 +62,7 @@ function getRankings(): string[] {
 
 // Attente de l'initialisation de l'API
 WA.onInit().then(() => {
+  
   
 
   WA.state.onVariableChange('likeCounts').subscribe((data: unknown) => {
