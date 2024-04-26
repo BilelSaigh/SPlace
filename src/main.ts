@@ -14,20 +14,17 @@ WA.onInit().then(  async () => {
         persist: true,
         scope: "world",
     });
-    console.log('Scripting API ready');
     let noteWebsite: any;
     WA.ui.onRemotePlayerClicked.subscribe( async (remotePlayer: RemotePlayer)  => {
         console.log(remotePlayer.state.tags)
         let tags = remotePlayer.state.tags as string[];
-        console.log("TAGSS",tags.includes('model'))
         //verifier si le joueur est un model pour afficher les informations
         if (tags.includes('model')) {
             await WA.players.configureTracking();
-            console.log('Remote player clicked', remotePlayer.playerId);
             const player = WA.players.get(remotePlayer.playerId);
-            console.log("Player : " , player)
             if (player !== undefined) {
                 let cardTitleElements = document.getElementsByClassName('card-title');
+                console.log(cardTitleElements)
                 if (cardTitleElements.length > 0) {
                     let cardTitleElement = cardTitleElements[0] as HTMLElement;
                     cardTitleElement.innerHTML = `${player.name}`;
@@ -38,6 +35,11 @@ WA.onInit().then(  async () => {
                     cardTextElement.innerHTML = `Lors de mes shows pv, je suis souvent en lingerie sexy, en tenue de soubrette, en tenue de secrétaire, en tenue d'infirmière, en tenue d'écolière, en tenue de sportive, en tenue de policière, en tenue de militaire`;
                 }
                 remotePlayer.addAction('En savoir plus', async () => {
+                    await WA.player.state.saveVariable("clickID", player, {
+                        public: true,
+                        persist: true,
+                        scope: "world",
+                    });
                     noteWebsite = await WA.ui.website.open({
                         url: "./form.html",
                         position: {
