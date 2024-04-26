@@ -17,6 +17,7 @@ WA.onInit().then(  async () => {
         if (WA.player.tags.includes('model')) {
             console.log('Remote player clicked', remotePlayer.playerId);
             const player = WA.players.get(remotePlayer.playerId);
+            console.log("Player : " , player)
             if (player !== undefined) {
                 console.log(`Player 1 name is ${player.name}`);
                 console.log(`Player  is ${player}`);
