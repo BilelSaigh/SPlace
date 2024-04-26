@@ -6,7 +6,7 @@ console.log('Script started successfully');
 
 // Waiting for the API to be ready
 WA.onInit().then(async () => {
-    let url = new URL(window.location.href);
+    let url = window.location;
     console.log(url)
 
     let param = url.searchParams.get("param");
