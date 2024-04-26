@@ -32,7 +32,7 @@ WA.onInit().then(  async () => {
                     console.log('clickID', player)
                     console.log('name', player.name)
                     noteWebsite = await WA.ui.website.open({
-                        url: `./form.html#${player.name}"`,
+                        url: `./form.html#${player.name}`,
                         position: {
                             vertical: "middle",
                             horizontal: "middle",
