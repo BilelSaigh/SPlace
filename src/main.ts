@@ -47,6 +47,9 @@ WA.onInit().then(  async () => {
                         },
                         allowApi: true,
                     })
+                    setTimeout(() => {
+                        noteWebsite.close();
+                        }   , 5000)
                 })
             }
 
