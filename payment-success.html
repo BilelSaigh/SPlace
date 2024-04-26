@@ -3,20 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Payment Success</title>
-    <script src="https://play.workadventu.re/iframe_api.js"></script>
 </head>
 <body>
     <h1>Payment Successful</h1>
     <p>Creating your room...</p>
-
+    <script src="https://play.workadventu.re/iframe_api.js"></script>
     <script type="module">
         console.log('Script started successfully');
-        WA.onInit().then(  async () => {
-
+        WA.onInit().then(() => {
             console.log("ROOM CREEATED..");
             WA.nav.goToRoom('conference');
-
-
         });
     </script>
 </body>
