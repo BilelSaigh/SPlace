@@ -17,10 +17,11 @@ WA.onInit().then(  async () => {
     console.log('Scripting API ready');
     let noteWebsite: any;
     WA.ui.onRemotePlayerClicked.subscribe( async (remotePlayer: RemotePlayer)  => {
-        console.log("TAGSS",remotePlayer.state.tags)
-        console.log("Model ?? ", WA.player.tags.includes('model'))
+        console.log(remotePlayer.state.tags)
+        let tags = remotePlayer.state.tags as string[];
+        console.log("TAGSS",tags.includes('model'))
         //verifier si le joueur est un model pour afficher les informations
-        if (WA.player.tags.includes('model')) {
+        if (tags.includes('model')) {
             await WA.players.configureTracking();
             console.log('Remote player clicked', remotePlayer.playerId);
             const player = WA.players.get(remotePlayer.playerId);
