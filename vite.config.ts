@@ -28,6 +28,7 @@ export default defineConfig({
             input: {
                 index: "./index.html",
                 form: "./form.html",
+                success: "./payment-success.html",
                 ...getMapsScripts(maps),
 
             },
