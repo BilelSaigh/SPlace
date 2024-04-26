@@ -14,11 +14,17 @@ WA.onInit().then(  async () => {
     console.log('Tags: ', WA.player.tags);
     console.log('Player: ', WA.player);
     let noteWebsite: any;
-    if (WA.player.tags.includes('model')) {
+    WA.ui.onRemotePlayerClicked.subscribe((remotePlayer: RemotePlayer) => {
+        if (WA.player.tags.includes('model')) {
         console.log('Player is a model');
-        WA.ui.onRemotePlayerClicked.subscribe((remotePlayer: RemotePlayer) => {
-            console.log('Remote player clicked', remotePlayer);
+            console.log('Remote player clicked', remotePlayer.playerId);
             remotePlayer.addAction('En savoir plus', async () => {
+                await WA.players.configureTracking();
+                const player = WA.players.get(remotePlayer.playerId);
+                if (player !== undefined) {
+                    console.log(`Player 1 name is ${player.name}`);
+                    console.log(`Player 1 name is ${player}`);
+                }
                 noteWebsite = await WA.ui.website.open({
                     url: "./form.html",
                     position: {
@@ -35,8 +41,8 @@ WA.onInit().then(  async () => {
                     allowApi: true,
                 })
             })
-        });
-    }
+        }
+    });
 
 
     WA.room.onEnterLayer("formLayer").subscribe(async () => {
