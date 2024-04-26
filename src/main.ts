@@ -9,11 +9,12 @@ let currentPopup: any = undefined;
 
 // Waiting for the API to be ready
 WA.onInit().then(  async () => {
-    WA.state.saveVariable('config', {
-        'tags':  WA.player.tags
-    }).catch(e => console.error('Something went wrong while saving variable', e));
-    let config = WA.state.loadVariable('config');
-
+    await WA.player.state.saveVariable("tags", WA.player.tags, {
+        public: true,
+        persist: true,
+        ttl: 24 * 3600,
+        scope: "world",
+    });
     console.log('Scripting API ready');
     console.log('My Tags', WA.player.tags);
     let noteWebsite: any;
