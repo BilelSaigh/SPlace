@@ -12,14 +12,12 @@ WA.onInit().then(  async () => {
     await WA.player.state.saveVariable("tags", WA.player.tags, {
         public: true,
         persist: true,
-        ttl: 24 * 3600,
         scope: "world",
     });
     console.log('Scripting API ready');
-    console.log('My Tags', WA.player.tags);
     let noteWebsite: any;
     WA.ui.onRemotePlayerClicked.subscribe( async (remotePlayer: RemotePlayer)  => {
-        console.log(remotePlayer)
+        console.log("TAGSS",remotePlayer.state.tags)
         console.log("Model ?? ", WA.player.tags.includes('model'))
         //verifier si le joueur est un model pour afficher les informations
         if (WA.player.tags.includes('model')) {
