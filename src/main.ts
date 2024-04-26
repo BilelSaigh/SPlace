@@ -30,7 +30,7 @@ WA.onInit().then(  async () => {
                         scope: "world",
                     });
                     noteWebsite = await WA.ui.website.open({
-                        url: `./form.html?param=${encodeURIComponent(player.name)}`,
+                        url: `./form.html#param=${encodeURIComponent(player.name)}`,
                         position: {
                             vertical: "middle",
                             horizontal: "middle",
