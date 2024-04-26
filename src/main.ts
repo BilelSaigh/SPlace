@@ -21,7 +21,7 @@ WA.onInit().then(  async () => {
             await WA.players.configureTracking();
             const player = WA.players.get(remotePlayer.playerId);
             if (player !== undefined) {
-                remotePlayer.addAction('Booker un RDV', async () => {
+                remotePlayer.addAction('Un moment avec '+player.name + " ?", async () => {
                     await WA.player.state.saveVariable("clickID", player.playerId, {
                         public: true,
                         persist: true,
@@ -44,10 +44,9 @@ WA.onInit().then(  async () => {
                     })
                     setTimeout(() => {
                         noteWebsite.close();
-                        }   , 5000)
+                        }   , 9000)
                 })
             }
-
         }
     });
 
