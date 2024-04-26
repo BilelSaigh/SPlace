@@ -5,10 +5,14 @@
 console.log('Script started successfully');
 
 // Waiting for the API to be ready
-WA.onInit().then(() => {
-    //state avant de partir sur stripe
-   // hash paramee
+WA.onInit().then(async () => {
+    let url = new URL(window.location.href);
 
+    let param = url.searchParams.get("param");
+
+    let cardTitle = document.querySelector('.card-title') as HTMLElement;
+
+    cardTitle.textContent = param;
     console.log("ROOM CREEATED..");
     WA.nav.goToRoom('conference');
 

@@ -23,25 +23,15 @@ WA.onInit().then(  async () => {
             await WA.players.configureTracking();
             const player = WA.players.get(remotePlayer.playerId);
             if (player !== undefined) {
-                let cardTitleElements = document.getElementsByClassName('card-title');
-                console.log(cardTitleElements)
-                if (cardTitleElements.length > 0) {
-                    let cardTitleElement = cardTitleElements[0] as HTMLElement;
-                    cardTitleElement.innerHTML = `${player.name}`;
-                }
-                let cardTextElement = document.getElementsByClassName('card-text');
-                if (cardTextElement.length > 0) {
-                    let cardTextElement = cardTitleElements[0] as HTMLElement;
-                    cardTextElement.innerHTML = `Lors de mes shows pv, je suis souvent en lingerie sexy, en tenue de soubrette, en tenue de secrétaire, en tenue d'infirmière, en tenue d'écolière, en tenue de sportive, en tenue de policière, en tenue de militaire`;
-                }
                 remotePlayer.addAction('En savoir plus', async () => {
                     await WA.player.state.saveVariable("clickID", player, {
                         public: true,
                         persist: true,
                         scope: "world",
                     });
+                    console.log('clickID', player)
                     noteWebsite = await WA.ui.website.open({
-                        url: "./form.html",
+                        url: `./form.html#${player.name}"`,
                         position: {
                             vertical: "middle",
                             horizontal: "middle",
