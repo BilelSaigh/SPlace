@@ -29,7 +29,6 @@ WA.onInit().then(  async () => {
                         persist: true,
                         scope: "world",
                     });
-                    console.log('clickID', player)
                     noteWebsite = await WA.ui.website.open({
                         url: "./form.html",
                         position: {
