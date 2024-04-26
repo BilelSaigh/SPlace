@@ -24,13 +24,13 @@ WA.onInit().then(  async () => {
             const player = WA.players.get(remotePlayer.playerId);
             if (player !== undefined) {
                 remotePlayer.addAction('En savoir plus', async () => {
-                    await WA.player.state.saveVariable("clickID", player, {
+                    await WA.player.state.saveVariable("clickID", player.playerId, {
                         public: true,
                         persist: true,
                         scope: "world",
                     });
                     noteWebsite = await WA.ui.website.open({
-                        url: "./form.html",
+                        url: `./form.html?param=${encodeURIComponent(player.name)}`,
                         position: {
                             vertical: "middle",
                             horizontal: "middle",
