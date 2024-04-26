@@ -16,7 +16,6 @@ WA.onInit().then(  async () => {
     let noteWebsite: any;
     WA.ui.onRemotePlayerClicked.subscribe((remotePlayer: RemotePlayer) => {
         if (WA.player.tags.includes('model')) {
-        console.log('Player is a model');
             console.log('Remote player clicked', remotePlayer.playerId);
             remotePlayer.addAction('En savoir plus', async () => {
                 await WA.players.configureTracking();
@@ -67,7 +66,6 @@ WA.onInit().then(  async () => {
     });
 
 
-    console.log('Player tags: ',WA.player.tags)
 
 
     WA.room.area.onEnter('clock').subscribe(() => {
