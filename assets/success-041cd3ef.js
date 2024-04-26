@@ -1,1 +1,0 @@
-import"./modulepreload-polyfill-3cfb730f.js";console.log("Script started successfully");WA.onInit().then(async()=>{new URLSearchParams(window.location.search).get("param")==="succes"?console.log("ROOM CREEATED"):console.error("Payment failed")});
