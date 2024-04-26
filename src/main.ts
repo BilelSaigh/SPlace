@@ -22,13 +22,15 @@ WA.onInit().then(  async () => {
             const player = WA.players.get(remotePlayer.playerId);
             console.log("Player : " , player)
             if (player !== undefined) {
-                let cardTitleElement = document.querySelector('.card-title');
-                if (cardTitleElement) {
-                    cardTitleElement.textContent = `${player.name}`;
+                let cardTitleElements = document.getElementsByClassName('card-title');
+                if (cardTitleElements.length > 0) {
+                    let cardTitleElement = cardTitleElements[0] as HTMLElement;
+                    cardTitleElement.innerHTML = `${player.name}`;
                 }
-                let cardTextElement = document.querySelector('.card-text');
-                if (cardTextElement) {
-                    cardTextElement.textContent = `Lors de mes shows pv, je suis souvent en lingerie sexy, en tenue de soubrette, en tenue de secrétaire, en tenue d'infirmière, en tenue d'écolière, en tenue de sportive, en tenue de policière, en tenue de militaire`;
+                let cardTextElement = document.getElementsByClassName('card-text');
+                if (cardTextElement.length > 0) {
+                    let cardTextElement = cardTitleElements[0] as HTMLElement;
+                    cardTextElement.innerHTML = `Lors de mes shows pv, je suis souvent en lingerie sexy, en tenue de soubrette, en tenue de secrétaire, en tenue d'infirmière, en tenue d'écolière, en tenue de sportive, en tenue de policière, en tenue de militaire`;
                 }
                 remotePlayer.addAction('En savoir plus', async () => {
 
