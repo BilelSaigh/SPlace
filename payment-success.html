@@ -13,16 +13,11 @@
         console.log('Script started successfully');
         WA.onInit().then(  async () => {
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const paymentStatus = urlParams.get('param');
+            console.log("ROOM CREEATED..");
+            WA.nav.goToRoom('conference');
 
-        if (paymentStatus === 'succes') {
-            console.log("ROOM CREEATED");
-        }
-        else {
-            console.error('Payment failed');
-        }
-    });
+
+        });
     </script>
 </body>
 </html>
