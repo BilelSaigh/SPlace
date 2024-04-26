@@ -4,9 +4,10 @@
 
 console.log('Script started successfully');
 
-
 // Waiting for the API to be ready
 WA.onInit().then(() => {
+    //state avant de partir sur stripe
+   // hash paramee
 
     console.log("ROOM CREEATED..");
     WA.nav.goToRoom('conference');

@@ -9,11 +9,16 @@ let currentPopup: any = undefined;
 
 // Waiting for the API to be ready
 WA.onInit().then(  async () => {
+    WA.state.saveVariable('config', {
+        'tags':  WA.player.tags
+    }).catch(e => console.error('Something went wrong while saving variable', e));
+    let config = WA.state.loadVariable('config');
 
     console.log('Scripting API ready');
     console.log('My Tags', WA.player.tags);
     let noteWebsite: any;
     WA.ui.onRemotePlayerClicked.subscribe( async (remotePlayer: RemotePlayer)  => {
+        console.log(remotePlayer)
         console.log("Model ?? ", WA.player.tags.includes('model'))
         //verifier si le joueur est un model pour afficher les informations
         if (WA.player.tags.includes('model')) {
@@ -33,7 +38,6 @@ WA.onInit().then(  async () => {
                     cardTextElement.innerHTML = `Lors de mes shows pv, je suis souvent en lingerie sexy, en tenue de soubrette, en tenue de secrétaire, en tenue d'infirmière, en tenue d'écolière, en tenue de sportive, en tenue de policière, en tenue de militaire`;
                 }
                 remotePlayer.addAction('En savoir plus', async () => {
-
                     noteWebsite = await WA.ui.website.open({
                         url: "./form.html",
                         position: {
