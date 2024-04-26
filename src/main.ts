@@ -15,13 +15,14 @@ WA.onInit().then(  async () => {
     let noteWebsite: any;
     WA.ui.onRemotePlayerClicked.subscribe( async (remotePlayer: RemotePlayer)  => {
         if (WA.player.tags.includes('model')) {
+            console.log(WA.player.tags.includes('model'))
             await WA.players.configureTracking();
             console.log('Remote player clicked', remotePlayer.playerId);
             const player = WA.players.get(remotePlayer.playerId);
             console.log("Player : " , player)
             if (player !== undefined) {
                 console.log(`Player 1 name is ${player.name}`);
-                console.log(`Player  is ${player}`);
+                console.log(`Player  is ${player.tags}`);
             }
             remotePlayer.addAction('En savoir plus', async () => {
 
