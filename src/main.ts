@@ -14,34 +14,42 @@ WA.onInit().then(  async () => {
     console.log('My Tags', WA.player.tags);
     let noteWebsite: any;
     WA.ui.onRemotePlayerClicked.subscribe( async (remotePlayer: RemotePlayer)  => {
+        console.log("Model ?? ", WA.player.tags.includes('model'))
+        //verifier si le joueur est un model pour afficher les informations
         if (WA.player.tags.includes('model')) {
-            console.log(WA.player.tags.includes('model'))
             await WA.players.configureTracking();
             console.log('Remote player clicked', remotePlayer.playerId);
             const player = WA.players.get(remotePlayer.playerId);
             console.log("Player : " , player)
             if (player !== undefined) {
-                console.log(`Player 1 name is ${player.name}`);
-                console.log(`Player  is ${player.tags}`);
-            }
-            remotePlayer.addAction('En savoir plus', async () => {
+                let cardTitleElement = document.querySelector('.card-title');
+                if (cardTitleElement) {
+                    cardTitleElement.textContent = `${player.name}`;
+                }
+                let cardTextElement = document.querySelector('.card-text');
+                if (cardTextElement) {
+                    cardTextElement.textContent = `Lors de mes shows pv, je suis souvent en lingerie sexy, en tenue de soubrette, en tenue de secrétaire, en tenue d'infirmière, en tenue d'écolière, en tenue de sportive, en tenue de policière, en tenue de militaire`;
+                }
+                remotePlayer.addAction('En savoir plus', async () => {
 
-                noteWebsite = await WA.ui.website.open({
-                    url: "./form.html",
-                    position: {
-                        vertical: "middle",
-                        horizontal: "middle",
-                    },
-                    size: {
-                        height: "30vh",
-                        width: "80vh",
-                    },
-                    margin: {
-                        top: "10vh",
-                    },
-                    allowApi: true,
+                    noteWebsite = await WA.ui.website.open({
+                        url: "./form.html",
+                        position: {
+                            vertical: "middle",
+                            horizontal: "middle",
+                        },
+                        size: {
+                            height: "30vh",
+                            width: "80vh",
+                        },
+                        margin: {
+                            top: "10vh",
+                        },
+                        allowApi: true,
+                    })
                 })
-            })
+            }
+
         }
     });
 
