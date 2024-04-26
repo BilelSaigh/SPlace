@@ -6,15 +6,17 @@ console.log('Script started successfully');
 
 // Waiting for the API to be ready
 WA.onInit().then(async () => {
-    let url = window.location;
+    let url = window.location.href;
+    let hash = window.location.hash;
+    let param = decodeURIComponent(hash.split('=')[1]);
+
     console.log(url)
-
-
-
+    console.log(hash)
+    console.log(param)
 
     let cardTitle = document.querySelector('.card-title') as HTMLElement;
+    cardTitle.textContent = param;
 
-    console.log(cardTitle)
     console.log("ROOM CREEATED..");
     WA.nav.goToRoom('conference');
 
