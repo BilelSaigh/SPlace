@@ -13,8 +13,9 @@ WA.onInit().then(  async () => {
     console.log('Scripting API ready');
     console.log('My Tags', WA.player.tags);
     let noteWebsite: any;
-    WA.ui.onRemotePlayerClicked.subscribe((remotePlayer: RemotePlayer) => {
+    WA.ui.onRemotePlayerClicked.subscribe( async (remotePlayer: RemotePlayer)  => {
         if (WA.player.tags.includes('model')) {
+            await WA.players.configureTracking();
             console.log('Remote player clicked', remotePlayer.playerId);
             const player = WA.players.get(remotePlayer.playerId);
             console.log("Player : " , player)
@@ -23,7 +24,6 @@ WA.onInit().then(  async () => {
                 console.log(`Player  is ${player}`);
             }
             remotePlayer.addAction('En savoir plus', async () => {
-                await WA.players.configureTracking();
 
                 noteWebsite = await WA.ui.website.open({
                     url: "./form.html",
