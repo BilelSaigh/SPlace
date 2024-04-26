@@ -9,14 +9,11 @@ WA.onInit().then(async () => {
     let url = window.location;
     console.log(url)
 
-    let poram = decodeURIComponent(url.hash.split('=')[1]);
 
 
-    console.log(poram);
 
     let cardTitle = document.querySelector('.card-title') as HTMLElement;
 
-    cardTitle.textContent = param;
     console.log(cardTitle)
     console.log("ROOM CREEATED..");
     WA.nav.goToRoom('conference');
