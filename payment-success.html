@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Success</title>
+    <script src="https://play.workadventu.re/iframe_api.js"></script>
+</head>
+<body>
+    <h1>Payment Successful</h1>
+    <p>Creating your room...</p>
+
+    <script type="module">
+        console.log('Script started successfully');
+        WA.onInit().then(  async () => {
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const paymentStatus = urlParams.get('param');
+
+        if (paymentStatus === 'succes') {
+            console.log("ROOM CREEATED");
+        }
+        else {
+            console.error('Payment failed');
+        }
+    });
+    </script>
+</body>
+</html>
