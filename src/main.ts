@@ -11,19 +11,18 @@ let currentPopup: any = undefined;
 WA.onInit().then(  async () => {
 
     console.log('Scripting API ready');
-    console.log('Tags: ', WA.player.tags);
-    console.log('Player: ', WA.player);
     let noteWebsite: any;
     WA.ui.onRemotePlayerClicked.subscribe((remotePlayer: RemotePlayer) => {
         if (WA.player.tags.includes('model')) {
             console.log('Remote player clicked', remotePlayer.playerId);
+            const player = WA.players.get(remotePlayer.playerId);
+            if (player !== undefined) {
+                console.log(`Player 1 name is ${player.name}`);
+                console.log(`Player  is ${player}`);
+            }
             remotePlayer.addAction('En savoir plus', async () => {
                 await WA.players.configureTracking();
-                const player = WA.players.get(remotePlayer.playerId);
-                if (player !== undefined) {
-                    console.log(`Player 1 name is ${player.name}`);
-                    console.log(`Player 1 name is ${player}`);
-                }
+
                 noteWebsite = await WA.ui.website.open({
                     url: "./form.html",
                     position: {
