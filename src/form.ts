@@ -9,6 +9,7 @@ WA.onInit().then(async () => {
     let url = new URL(window.location.href);
 
     let param = url.searchParams.get("param");
+    console.log(param);
 
     let cardTitle = document.querySelector('.card-title') as HTMLElement;
 
