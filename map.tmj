@@ -1106,10 +1106,39 @@
                  "width":130.969281820309,
                  "x":509.675798228198,
                  "y":413.223140495868
+                }, 
+                {
+                 "height":135.333333333333,
+                 "id":33,
+                 "name":"likeZone",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":99.3333333333334,
+                 "x":394.666666666667,
+                 "y":429.333333333333
+                }, 
+                {
+                 "height":0,
+                 "id":34,
+                 "name":"likeCounts",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"serialise",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":0,
+                 "x":432,
+                 "y":468
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1383,7 +1412,7 @@
          "y":0
         }],
  "nextlayerid":109,
- "nextobjectid":33,
+ "nextobjectid":35,
  "orientation":"orthogonal",
  "properties":[
         {
