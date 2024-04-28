@@ -817,22 +817,12 @@
                 {
                  "height":195.517752164051,
                  "id":13,
-                 "name":"jitsiChillZone",
+                 "name":"zoomZone",
                  "properties":[
                         {
                          "name":"focusable",
                          "type":"bool",
                          "value":true
-                        }, 
-                        {
-                         "name":"jitsiRoom",
-                         "type":"string",
-                         "value":"ChillZone"
-                        }, 
-                        {
-                         "name":"jitsiTrigger",
-                         "type":"string",
-                         "value":"onaction"
                         }, 
                         {
                          "name":"zoom_margin",
@@ -849,22 +839,12 @@
                 {
                  "height":99,
                  "id":16,
-                 "name":"jitsiChillZone",
+                 "name":"zoomZone",
                  "properties":[
                         {
                          "name":"focusable",
                          "type":"bool",
                          "value":true
-                        }, 
-                        {
-                         "name":"jitsiRoom",
-                         "type":"string",
-                         "value":"ChillZone"
-                        }, 
-                        {
-                         "name":"jitsiTrigger",
-                         "type":"string",
-                         "value":"onaction"
                         }, 
                         {
                          "name":"zoom_margin",
@@ -915,22 +895,12 @@
                 {
                  "height":162,
                  "id":20,
-                 "name":"jitsiChillZone",
+                 "name":"zoomZone",
                  "properties":[
                         {
                          "name":"focusable",
                          "type":"bool",
                          "value":true
-                        }, 
-                        {
-                         "name":"jitsiRoom",
-                         "type":"string",
-                         "value":"ChillZone"
-                        }, 
-                        {
-                         "name":"jitsiTrigger",
-                         "type":"string",
-                         "value":"onaction"
                         }, 
                         {
                          "name":"zoom_margin",
@@ -947,22 +917,12 @@
                 {
                  "height":190,
                  "id":21,
-                 "name":"jitsiChillZone",
+                 "name":"zoomZone",
                  "properties":[
                         {
                          "name":"focusable",
                          "type":"bool",
                          "value":true
-                        }, 
-                        {
-                         "name":"jitsiRoom",
-                         "type":"string",
-                         "value":"ChillZone"
-                        }, 
-                        {
-                         "name":"jitsiTrigger",
-                         "type":"string",
-                         "value":"onaction"
                         }, 
                         {
                          "name":"zoom_margin",
@@ -1106,10 +1066,54 @@
                  "width":130.969281820309,
                  "x":509.675798228198,
                  "y":413.223140495868
+                }, 
+                {
+                 "height":832,
+                 "id":40,
+                 "name":"Silent",
+                 "properties":[
+                        {
+                         "name":"silent",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":1181.33333333333,
+                 "x":1.33333333333333,
+                 "y":0
+                }, 
+                {
+                 "height":602,
+                 "id":43,
+                 "name":"Song",
+                 "properties":[
+                        {
+                         "name":"audioLoop",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"audioVolume",
+                         "type":"float",
+                         "value":0.3
+                        }, 
+                        {
+                         "name":"playAudio",
+                         "type":"string",
+                         "value":".\/src\/sexyVoice.mp3"
+                        }],
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":1182,
+                 "x":3,
+                 "y":0
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1383,7 +1387,7 @@
          "y":0
         }],
  "nextlayerid":109,
- "nextobjectid":33,
+ "nextobjectid":44,
  "orientation":"orthogonal",
  "properties":[
         {
