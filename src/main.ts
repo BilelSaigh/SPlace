@@ -106,7 +106,10 @@ WA.onInit().then(  async () => {
         persist: true,
         scope: "world",
     });
+
+
     let noteWebsite: any;
+    let streamWebsite: any;
     WA.ui.onRemotePlayerClicked.subscribe( async (remotePlayer: RemotePlayer)  => {
         console.log(remotePlayer.state.tags)
         let tags = remotePlayer.state.tags as string[];
@@ -143,6 +146,30 @@ WA.onInit().then(  async () => {
         }
     });
 
+    WA.room.onEnterLayer("streamNote").subscribe(async () => {
+        console.log("Entering visibleNote layer");
+
+        streamWebsite = await WA.ui.website.open({
+            url: "./stream.html",
+            position: {
+                vertical: "top",
+                horizontal: "middle",
+            },
+            size: {
+                height: "90%",
+                width: "80%",
+            },
+            margin: {
+                top: "10vh",
+            },
+            allowApi: true,
+        });
+
+    });
+
+    WA.room.onLeaveLayer("streamNote").subscribe(() => {
+        streamWebsite.close();
+    });
 
     WA.room.area.onEnter('clock').subscribe(() => {
         const today = new Date();

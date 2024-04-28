@@ -27,6 +27,7 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 index: "./index.html",
+                stream: "./stream.html",
                 form: "./form.html",
                 success: "./payment-success.html",
                 ...getMapsScripts(maps),
