@@ -4,7 +4,6 @@ console.log('Script started successfully');
 
 // Waiting for the API to be ready
 WA.onInit().then(async () => {
-    let url = window.location.href;
     let hash = window.location.hash;
     let param = decodeURIComponent(hash.split('=')[1]);
 
