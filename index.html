@@ -10,6 +10,13 @@
     <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
     <script>
         window.onload = function () {
+            var age = prompt("Quel est votre âge?");
+            if (age >= 21) {
+                alert("Bienvenue sur Splace");
+            } else {
+                alert("Vous n'avez pas l'âge suffisant pour accéder à ce site.");
+                window.location.replace("404.html");
+            }
             const host = window.location.host;
             let path = window.location.pathname;
             if (path.endsWith('index.html')) {
