@@ -53,6 +53,7 @@ WA.onInit().then(  async () => {
     const sexyVoice = WA.sound.loadSound(".src/sexyVoice.m4a");
 
     WA.room.area.onEnter("hotesseZone").subscribe(() => {
+        console.log('hotesseZone')
         WA.ui.displayBubble("Bonjour, bienvenue sur Splace, votre Safeplace pour explorer vos désirs les plus secrets.");
         sexyVoice.play({})
 
