@@ -50,15 +50,19 @@ WA.onInit().then(  async () => {
         }
     });
 
-    const sexyVoice = WA.sound.loadSound(".src/sexyVoice.m4a");
-
+    const sexyVoice = WA.sound.loadSound(".src/sexyVoice.mp3")
+    ;
     WA.room.onEnterLayer("hotesseZone").subscribe(() => {
-        WA.ui.displayActionMessage({
+        let triggerMessage = WA.ui.displayActionMessage({
             message: "Bonjour, bienvenue sur Splace, votre Safeplace pour explorer vos désirs les plus secrets.",
             callback: () => {
                 sexyVoice.play({})
             }
         });
+
+        setTimeout(() => {
+            triggerMessage.remove();
+        }, 5000)
         sexyVoice.play({})
     });
 
