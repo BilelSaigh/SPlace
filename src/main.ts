@@ -2,7 +2,6 @@
 
 import {RemotePlayer} from "@workadventure/iframe-api-typings/play/src/front/Api/Iframe/Players/RemotePlayer";
 import {bootstrapExtra} from "@workadventure/scripting-api-extra/dist";
-import {ActionMessage} from "@workadventure/iframe-api-typings";
 
 console.log('Script started successfully');
 
