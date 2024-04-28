@@ -53,23 +53,14 @@ WA.onInit().then(  async () => {
     const sexyVoice = WA.sound.loadSound(".src/sexyVoice.m4a");
 
     WA.room.onEnterLayer("hotesseZone").subscribe(() => {
-        const triggerMessage = WA.ui.displayActionMessage({
+        WA.ui.displayActionMessage({
             message: "Bonjour, bienvenue sur Splace, votre Safeplace pour explorer vos désirs les plus secrets.",
             callback: () => {
                 sexyVoice.play({})
             }
         });
-
-        setTimeout(() => {
-            // later
-            triggerMessage.remove();
-        }, 1000)
-
         sexyVoice.play({})
-
     });
-
-        console.log('hotesseZone')
 
     WA.room.onLeaveLayer("hotesseZone").subscribe(() => {
         console.log('hotesseZone bye')
