@@ -20,14 +20,13 @@ function genMessage() {
             if(!WA.player.state.hasVariable('likeCounts')){              
                 WA.state.saveVariable('likeCounts', {})
             }else{
-
-              let save = WA.state.likeCounts;
+                let save: Record<string, number> = WA.state.loadVariable('likeCounts') as Record<string, number> || {};
               
               console.log("save", save);
 
-               if(save === '{}'){
-                save = {};
-               } 
+                if(Object.keys(save).length === 0){
+                    save = {};
+                }
               
               
               if(save.hasOwnProperty(WA.player.name)){
